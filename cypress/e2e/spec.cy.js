@@ -9,7 +9,7 @@ describe('Agenda de Contatos - Testes E2E', () => {
   })
 
   it('Deve adicionar um novo contato', () => {
-    cy.get('input[placeholder="Nome completo"]').type(nome)
+    cy.get('input[placeholder="Nome"]').type(nome)
     cy.get('input[placeholder="E-mail"]').type(email)
     cy.get('input[placeholder="Telefone"]').type(telefone)
     cy.contains('Adicionar').click()
@@ -21,14 +21,14 @@ describe('Agenda de Contatos - Testes E2E', () => {
 
   it('Deve editar um contato existente', () => {
     cy.contains('Editar').click()
-    cy.get('input[placeholder="Nome completo"]').clear().type(nomeEditado)
+    cy.get('input[placeholder="Nome"]').clear().type(nomeEditado)
     cy.contains('Salvar').click()
 
     cy.contains(nomeEditado).should('exist')
   })
 
   it('Deve remover um contato', () => {
-    cy.contains('Remover').click()
+    cy.contains('Deletar').click()
     cy.contains(nomeEditado).should('not.exist')
   })
 })
